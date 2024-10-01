@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +8,19 @@ import { AbstractControl, FormBuilder, ValidationErrors, Validators } from '@ang
 })
 export class AppComponent {
   title = 'reactive.form';
-
+   form : FormGroup;
   
 
-  constructor(
+  constructor(private fb: FormBuilder) { 
+    this.form = this.fb.group({
+      nom: ['', [Validators.required]],
+      numRue: ['',[Validators.required]],
+      rue: ['',[Validators.required]],
+      codePostal: ['',[Validators.required]],
+      commentaire: ['',[Validators.required]],
+    });
     
-  ) { }
+  }
 }
 
 
